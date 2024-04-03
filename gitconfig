@@ -1,0 +1,22 @@
+[user]
+	email = GIT-EMAIL
+	name = bob chase
+[alias]
+    alias = config --get-regexp ^alias.
+    br = branch
+    co = checkout
+    df = !gdf
+    dt = difftool --tool=vimdiff --no-prompt
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    last = log -1 HEAD
+    lol = log --graph --pretty=oneline --abbrev-commit --decorate
+    loltop = !git lol HEAD~10..
+    mt = mergetool --tool=vimdiff --no-prompt
+    st = status
+    uncommit = reset --soft HEAD
+[color]
+    ui = true
+[core]
+	editor = /usr/bin/vim
+[push]
+	default = simple

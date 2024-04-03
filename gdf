@@ -1,0 +1,28 @@
+#! /bin/sh
+
+# --- diff relative to HEAD
+
+#     gdf       - list files changed between prior commit and HEAD (HEAD~1 HEAD~0)
+#     gdf n     - list files changed between HEAD~n and HEAD (HEAD~n HEAD~0)
+#     gdf n m   - list files changed between HEAD~n and HEAD~m
+#     gdf n m o - diff 'o'th file between HEAD~n and HEAD~m
+
+D1=${1-1}
+D2=${2-0}
+if [ -z "$3" ]; then
+  echo "Files changed from HEAD~${D1} to HEAD~${D2}:"
+  git diff HEAD~${D1} HEAD~${D2} --name-status | awk '{print NR ". " $0}'
+else
+  FN=$(git diff HEAD~${D1} HEAD~${D2} --name-status | awk -v line=$3 'NR==line{print;exit}')
+  if [ -z "$FN" ]; then
+    echo "File '$3' is not one of the choices."
+  else
+    TYPE=$(echo $FN | awk '{print $1}')
+    NAME=$(echo $FN | awk '{print $2}')
+    if [ "A" = "$TYPE" ]; then
+      echo "New file; no diff available: $NAME"
+    else
+      git dt HEAD~${D1}:${NAME} HEAD~${D2}:${NAME}  # use "difftool" alias
+    fi
+  fi
+fi

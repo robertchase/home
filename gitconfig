@@ -12,6 +12,7 @@
     lol = log --graph --pretty=oneline --abbrev-commit --decorate
     loltop = !git lol HEAD~10..
     mt = mergetool --tool=vimdiff --no-prompt
+    pr = remote prune origin
     st = status
     uncommit = reset --soft HEAD
 [color]
@@ -20,3 +21,5 @@
 	editor = /usr/bin/vim
 [push]
 	default = simple
+[merge]
+    tool = kdiff3

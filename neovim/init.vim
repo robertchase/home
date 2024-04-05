@@ -1,7 +1,7 @@
 " pip install pyvenv jedi flake8 in virtual environment
 " place link to flake8 in ~/bin/
 " lock python by pointing to virtual environment
-let g:python3_host_prog = '/Users/bob/venv-3.12/bin/python'
+let g:python3_host_prog = $VIM_PYTHON3
 
 " bring in FZF
 set rtp+=~/.fzf

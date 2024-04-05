@@ -10,5 +10,3 @@ alias viz='nvim $(fzf --preview "bat --style=numbers --color=always --theme=ansi
 alias lsof-listen="lsof -itcp -stcp:listen -nP"
 
 alias lc="pygount --format=summary"
-
-alias mm="python3 $HOME/git/makemake/makemake/mm.py"

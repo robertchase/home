@@ -1,16 +1,5 @@
-# virtual environment functions
-#
-# ve - activate virt env in .venv
-#     if ve.sh present, then source it
-#
-# unve - deactivate virt env
-#     restore PYTHONPATH
-#     unalias any symbols in _VE_ALIAS
-#     unset any symbols in _VE_SET
-#     unset any functions in _VE_FUNCTION
-#
-# jupyter - start jupyter notebook in current virt env or .venv
 function _ve {
+    # verify and return .venv or .venv-$1
     if [ -z "$1" ]; then
         VENV=".venv"
     else
@@ -28,6 +17,7 @@ function _ve {
 }
 
 function _ve_cache {
+    # cache/uncache environment variables for ve.sh
     if [ ! -z "$_VE_OLD_PYTHONPATH" ]; then
         PYTHONPATH=$_VE_OLD_PYTHONPATH
     fi

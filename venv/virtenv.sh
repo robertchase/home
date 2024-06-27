@@ -80,7 +80,7 @@ function mk-ve {
     if [ -d $VENV ]; then
         rm -rf $VENV
     fi
-    python3 -m venv $VENV
+    ${VE_PYTHON-python3} -m venv $VENV
     $VENV/bin/pip install --no-cache-dir --upgrade pip
     $VENV/bin/pip install -r requirements.txt
     if [ ! -z "$1" ]; then

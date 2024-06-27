@@ -13,9 +13,8 @@ Use `vim-plug` to bring in fancy tools.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
 0. isolate a python environment with venv
 0. `pip install pynvim jedi flake8` in the virtual env
-0. link `flake8` executable to something in the PATH (like ~/bin/flake8)
-0. make sure `init.vim` is linked to `~/.config/nvim/init.vim`
 0. export `VIM_PYTHON3` to point to the venv's python executable
+0. make sure `init.vim` is linked to `~/.config/nvim/init.vim`
 0. `nvim + :PlugInstall`
 
 # basic

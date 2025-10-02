@@ -67,8 +67,9 @@ function unve {
 }
 
 function mk-ve {
-    if [ ! -r requirements.txt ]; then
-        echo "requirements.txt not found" 1>&2
+    requirements_="${REQUIREMENTS:-requirements.txt}"
+    if [ ! -r "$requirements_" ]; then
+        echo "$requirements_ not found" 1>&2
         kill -INT $$
     fi
     unve
@@ -82,12 +83,13 @@ function mk-ve {
     fi
     ${VE_PYTHON-python3} -m venv $VENV
     $VENV/bin/pip install --no-cache-dir --upgrade pip
-    $VENV/bin/pip install -r requirements.txt
+    $VENV/bin/pip install -r "$requirements_"
     if [ ! -z "$1" ]; then
-        if [ -r "requirements-$1.txt" ]; then
-            $VENV/bin/pip install -r "requirements-$1.txt"
+        if [ -r "${requirements_}-$1.txt" ]; then
+            $VENV/bin/pip install -r "${requirements_}-$1.txt"
         fi
     fi
+    unset requirements_
 }
 
 function jupyter {

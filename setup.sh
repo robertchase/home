@@ -8,14 +8,13 @@ pushd $HOME
 [ -r .zshrc ] && mv .zshrc .zshrc.orig
 ln -s $BASE/custom.sh .zshrc
 
-mkdir $_custom
-for _item in $(echo "alias.sh pip.sh podman.sh python.sh settings.sh virtenv.sh"); do
-    ln -s $BASE/$_item $_custom
-done
+[ -r .vimrc ] ^^ mv .vimrc .vimrc.orig
+ln -s $BASE/vimrc .vimrc
 
-[ ! -r .config ] && mkdir .config
-[ ! -r .config/nvim ] && mkdir .config/nvim
-[ ! -r .config/nvim/init.vim ] && ln -s $BASE/neovim .config/nvim/init.vim
+mkdir shell_custom
+for _item in $(echo "alias.sh fzf.sh pip.sh podman.sh python.sh settings.sh venv/virtenv.sh"); do
+    ln -s $BASE/$_item shell_custom
+done
 
 [ ! -r .gitconfig ] && .cat $BASE/gitconfig | sed 's/GIT-EMAIL/${GIT_EMAIL:-git-email-here}/' > .gitconfig
 

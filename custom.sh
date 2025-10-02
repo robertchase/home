@@ -5,3 +5,5 @@ then
         source $filename
     done
 fi
+
+. "$HOME/.local/bin/env"

@@ -1,3 +1,7 @@
+" syntax highlighting
+syntax on
+filetype plugin indent on
+
 " indentation
 set autoindent
 set expandtab
@@ -8,9 +12,6 @@ set tabstop=4
 " line numbers
 set number
 set relativenumber
-
-" syntax highlighting
-syntax on
 
 " show cursorline as grey background
 set cursorline
@@ -45,19 +46,3 @@ set backspace=indent,eol,start
 set rtp+=~/.fzf
 :map <C-x><C-f> :FZF<Enter>
 :map <C-x><C-e> :FZF -e<Enter>
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-
-    " status line
-    Plugin 'vim-airline/vim-airline'
-
-    " python autocomplete (requires vim w/ +python3)
-    Plugin 'davidhalter/jedi-vim'
-
-    " git integration
-    Plugin 'tpope/vim-fugitive'
-call vundle#end()
-filetype plugin indent on
